@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">FetchFinal</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_behaviour_log">BehaviourLog</string>
+    <string name="title_activity_nfc">NFC</string>
+</resources>
