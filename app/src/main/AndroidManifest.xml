@@ -19,7 +19,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Settings"></activity>
         <activity android:name=".CreateAccount" />
-        <activity android:name=".Home" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".NFC"
             android:label="@string/title_activity_nfc"
@@ -28,7 +28,7 @@
         <activity android:name=".Notifications" />
         <activity android:name=".Family" />
         <activity android:name=".BehaviourLog" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

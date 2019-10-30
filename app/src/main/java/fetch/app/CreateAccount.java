@@ -57,6 +57,8 @@ public class CreateAccount extends AppCompatActivity {
             SubmitBtn.setEnabled(!emailInput.isEmpty() && !passwordInput.isEmpty());
 
 
+
+
         }
 
         @Override
