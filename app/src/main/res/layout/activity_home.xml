@@ -9,13 +9,42 @@
     <fragment
         android:id="@+id/home_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="363dp"
-        android:layout_height="309dp"
+        android:layout_width="283dp"
+        android:layout_height="230dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303"
+        app:layout_constraintVertical_bias="0.763"
         tools:ignore="MissingConstraints" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-62dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAnimals"
+            android:layout_width="117dp"
+            android:layout_height="95dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="126dp"
+            android:layout_marginRight="126dp"
+            android:layout_marginBottom="457dp"
+            android:background="#009688"
+            android:visibility="visible"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
