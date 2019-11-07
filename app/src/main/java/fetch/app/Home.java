@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import static fetch.app.R.id;
 import static fetch.app.R.layout;
 
+///Class
 
 //Central location for everything in app. Opens when user logs in or if they are already logged in.
 //Displays location for currently selected child/slider to choose a different child
