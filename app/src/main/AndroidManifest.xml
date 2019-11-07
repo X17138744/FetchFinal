@@ -20,7 +20,6 @@
         <activity android:name=".Settings" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Recycle" />
         <activity
             android:name=".NFC"
             android:label="@string/title_activity_nfc"

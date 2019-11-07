@@ -10,15 +10,15 @@
 
     <View
         android:id="@+id/colorView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="166dp"
+        android:layout_height="139dp"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <TextView
         android:id="@+id/tvAnimalName"
-        android:layout_width="127dp"
-        android:layout_height="28dp"
+        android:layout_width="203dp"
+        android:layout_height="55dp"
         android:textSize="20sp"
         android:visibility="visible"
         tools:visibility="visible" />

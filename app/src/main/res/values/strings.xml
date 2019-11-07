@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">FetchFinal</string>
+    <string name="app_name">Fetch!</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_behaviour_log">BehaviourLog</string>
     <string name="title_activity_nfc">NFC</string>
+    <string name="title_activity_recycle">Recycle</string>
+    <string name="title_activity_home">Home</string>
 </resources>
