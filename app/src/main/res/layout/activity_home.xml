@@ -2,41 +2,59 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="#132D7D"
     tools:context=".Home">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAnimals"
-        android:layout_width="379dp"
-        android:layout_height="213dp"
-        android:layout_marginBottom="28dp"
+    <ImageButton
+        android:id="@+id/backBtnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#132D7D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:context=".Home$Recycle" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.974"
+        app:srcCompat="@drawable/back_button" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/kidsScroll"
+        android:layout_width="386dp"
+        android:layout_height="222dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_map"
+        app:layout_constraintVertical_bias="0.13"
+        tools:layout_editor_absoluteX="0dp"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/show_dropdown_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="57dp"
+        android:background="#F36958"
+        android:onClick="showDropDownMenu"
+        android:text="Menu"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/kidsScroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <fragment
         android:id="@+id/home_map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="377dp"
-        android:layout_height="277dp"
-        app:layout_constraintBottom_toTopOf="@+id/rvAnimals"
+        android:layout_width="0dp"
+        android:layout_height="314dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/show_dropdown_menu"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="#008577"
-        android:onClick="showDropDownMenu"
-        android:text="ShowDropDownMenu"
-        android:textColor="#ffffff"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="47dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

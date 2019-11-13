@@ -1,15 +1,16 @@
 package fetch.app;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,64 +34,69 @@ import static fetch.app.R.layout;
 //Child portrait links to profile page
 
 
-/**
- * This is the section where the oul profile on home is meant to work. Still some hassle but getting there in the end.
- */
 
 public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     private MyRecyclerViewAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_home);
+        setContentView(R.layout.activity_home);
+
+        //NEEDS WORK SAMPLE BUTTON
+        ImageButton button=findViewById(id.backBtnHome);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // data to populate the RecyclerView with
-        ArrayList<Integer> viewColors = new ArrayList<>();
-        viewColors.add(Color.BLUE);
-        viewColors.add(Color.YELLOW);
-        viewColors.add(Color.MAGENTA);
-        viewColors.add(Color.RED);
-        viewColors.add(Color.BLACK);
+        ArrayList<Integer> imageBg = new ArrayList<>();
+        imageBg.add(Color.BLACK);
+        imageBg.add(Color.BLACK);
+        imageBg.add(Color.BLACK);
+        imageBg.add(Color.BLACK);
+        imageBg.add(Color.BLACK);
 
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Kid 1");
-        animalNames.add("Kid 2");
-        animalNames.add("Kid 3");
-        animalNames.add("Kid 4");
-        animalNames.add("Kid 5");
+        ArrayList<String> kidsNames = new ArrayList<>();
+        kidsNames.add("Megan");
+        kidsNames.add("Keith");
+        kidsNames.add("Steve");
+        kidsNames.add("Harry");
+        kidsNames.add("Ben");
 
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(id.rvAnimals);
+        RecyclerView recyclerView = findViewById(R.id.kidsScroll);
         LinearLayoutManager horizontalLayoutManager
                 = new LinearLayoutManager(Home.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayoutManager);
-        adapter = new MyRecyclerViewAdapter(Home.this, viewColors, animalNames);
+        adapter = new MyRecyclerViewAdapter(this, imageBg, kidsNames);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on item position " + position, Toast.LENGTH_SHORT).show();
-
-
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " Profile " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
     }
-
 
 
     /**
      * This is the section where Google Maps is gonna sort itself out and all and link with the bottom section.
      */
 
-    class Maps extends FragmentActivity implements OnMapReadyCallback {
+    class Maps extends AppCompatActivity implements OnMapReadyCallback {
 
         //Declares a variable for Google Maps
         private GoogleMap mMap;
 
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
             //Sets the content view for the activity. there is a automatic intent setting in the Manifest which is why its
@@ -124,26 +130,23 @@ public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.Ite
         }
 
 
-        //Dropdown Mode
+        class Dropdown extends Home implements MenuItem.OnMenuItemClickListener {
 
-        class DropDownMenu extends AppCompatActivity implements MenuItem.OnMenuItemClickListener {
-
-            Button showMenu = findViewById(id.show_dropdown_menu);
+            Button showMenu;
 
             @Override
             public void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
-                setContentView(layout.activity_home);
+                setContentView(R.layout.activity_home);
 
+                showMenu = findViewById(id.show_dropdown_menu);
                 showMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         PopupMenu dropDownMenu = new PopupMenu(getApplicationContext(), showMenu);
                         dropDownMenu.getMenuInflater().inflate(R.menu.drop_down_menu, dropDownMenu.getMenu());
-                        showMenu.setText("showDropDownMenu");
+                        showMenu.setText("DropDown Menu");
                         dropDownMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-
 
                             @Override
                             public boolean onMenuItemClick(MenuItem menuItem) {

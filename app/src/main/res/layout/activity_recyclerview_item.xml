@@ -10,8 +10,8 @@
 
     <View
         android:id="@+id/colorView"
-        android:layout_width="166dp"
-        android:layout_height="139dp"
+        android:layout_width="281dp"
+        android:layout_height="174dp"
         android:visibility="visible"
         tools:visibility="visible" />
 
