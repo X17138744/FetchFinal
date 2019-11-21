@@ -2,7 +2,9 @@ package fetch.app;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +17,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        ImageButton button=findViewById(R.id.backBtnProfile);
+        ImageButton button=findViewById(R.id.backBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -24,5 +26,4 @@ public class Profile extends AppCompatActivity {
         });
     }
 }
-
 

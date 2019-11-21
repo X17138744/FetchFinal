@@ -28,6 +28,7 @@
         <activity android:name=".Login" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".Profile" />
+        <activity android:name=".Dropdown" />
         <activity android:name=".Home" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

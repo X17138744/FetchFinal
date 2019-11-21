@@ -19,6 +19,7 @@
         android:id="@+id/tvAnimalName"
         android:layout_width="203dp"
         android:layout_height="55dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
         android:visibility="visible"
         tools:visibility="visible" />

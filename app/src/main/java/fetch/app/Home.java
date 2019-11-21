@@ -35,6 +35,7 @@ import static fetch.app.R.layout;
 
 
 
+
 public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     private MyRecyclerViewAdapter adapter;
@@ -42,16 +43,7 @@ public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.Ite
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        //NEEDS WORK SAMPLE BUTTON
-        ImageButton button=findViewById(id.backBtnHome);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        setContentView(layout.activity_home);
 
         // data to populate the RecyclerView with
         ArrayList<Integer> imageBg = new ArrayList<>();
@@ -73,7 +65,7 @@ public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.Ite
         LinearLayoutManager horizontalLayoutManager
                 = new LinearLayoutManager(Home.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayoutManager);
-        adapter = new MyRecyclerViewAdapter(this, imageBg, kidsNames);
+        adapter = new MyRecyclerViewAdapter(Home.this, imageBg, kidsNames);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
@@ -127,42 +119,6 @@ public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.Ite
             LatLng dublin = new LatLng(+53, -6);
             mMap.addMarker(new MarkerOptions().position(dublin).title("Marker in Dublin"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(dublin));
-        }
-
-
-        class Dropdown extends Home implements MenuItem.OnMenuItemClickListener {
-
-            Button showMenu;
-
-            @Override
-            public void onCreate(Bundle savedInstanceState) {
-                super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_home);
-
-                showMenu = findViewById(id.show_dropdown_menu);
-                showMenu.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PopupMenu dropDownMenu = new PopupMenu(getApplicationContext(), showMenu);
-                        dropDownMenu.getMenuInflater().inflate(R.menu.drop_down_menu, dropDownMenu.getMenu());
-                        showMenu.setText("DropDown Menu");
-                        dropDownMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-                            @Override
-                            public boolean onMenuItemClick(MenuItem menuItem) {
-                                Toast.makeText(getApplicationContext(), "You have clicked " + menuItem.getTitle(), Toast.LENGTH_LONG).show();
-                                return true;
-                            }
-                        });
-                        dropDownMenu.show();
-                    }
-                });
-            }
-
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
-            }
         }
     }
 }

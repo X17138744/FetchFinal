@@ -26,8 +26,8 @@ public class CreateAccount extends AppCompatActivity {
     // Creating EditText.
     EditText FullName, Email, Password ;
 
-    // Creating button;
-    Button Register;
+    // Creating buttons;
+    Button Register, Return;
 
     // Creating Volley RequestQueue.
     RequestQueue requestQueue;
@@ -44,9 +44,9 @@ public class CreateAccount extends AppCompatActivity {
     Boolean CheckEditText ;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_create_account);
 
         // Assigning ID's to EditText.
         FullName = findViewById(R.id.EditTextFullName);
@@ -55,8 +55,10 @@ public class CreateAccount extends AppCompatActivity {
 
         Password = findViewById(R.id.EditTextPassword);
 
-        // Assigning ID's to Button.
+        // Assigning ID's to Buttons.
         Register = findViewById(R.id.ButtonRegister);
+
+        Return = findViewById(R.id.ButtonReturn);
 
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(CreateAccount.this);
@@ -84,6 +86,19 @@ public class CreateAccount extends AppCompatActivity {
 
             }
         });
+
+        Return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Return();
+            }
+        });
+
+    }
+
+    private void Return() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
 
     }
 
@@ -124,7 +139,7 @@ public class CreateAccount extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
 
                 // Adding All values to Params.
-                // The firs argument should be same sa your MySQL database table columns.
+                // The first argument should be same sa your MySQL database table columns.
                 params.put("email", EmailHolder);
                 params.put("password", PasswordHolder);
                 params.put("fName", NameHolder);
