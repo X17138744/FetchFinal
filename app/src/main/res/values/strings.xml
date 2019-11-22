@@ -31,5 +31,5 @@
     <string name="time_taken_to_walk_home_on_friday_evenings_is_decreased_by_17">-Time taken to walk home on Friday evenings is decreased by 17%.</string>
     <string name="average_resting_heartrate_is_65bpm">-Average resting heartrate is 65bpm.</string>
     <string name="strayed_from_usual_route_to_school_on_wednesday_2_11_19_at_8_46_a_m">-Strayed from usual route to school on Wednesday 2/11/19 at 8:46 a.m.</string>
-    <string name="dropDropDownMenu">showDropDownMenu</string>
+    <string name="Menu">DropDown Menu</string>
 </resources>

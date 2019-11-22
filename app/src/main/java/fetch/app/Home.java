@@ -3,47 +3,64 @@ package fetch.app;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.PopupMenu;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
-
-import static fetch.app.R.id;
-import static fetch.app.R.layout;
-
-///Class
-
-//Central location for everything in app. Opens when user logs in or if they are already logged in.
-//Displays location for currently selected child/slider to choose a different child
-//dropdown menu which allows access to other areas of app (log out, settings, edit family, etc)
-//Child portrait links to profile page
-
-
+import java.util.List;
 
 
 public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
+    //Carosel and Dropdown Declarations
     private MyRecyclerViewAdapter adapter;
+    Spinner spinner;
+    List<String> list  = new ArrayList<>();
+    ArrayAdapter<String> spinnerAdapter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_home);
+        setContentView(R.layout.activity_home);
+
+        //Define spinner
+        spinner=(Spinner) findViewById(R.id.spinner_services);
+        spinnerAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, android.R.id.text1);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        //Applying Listener on Spinner :
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int selectedPosition= position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //Adding items to list :
+        list.add("Menu");
+        list.add("Add Child");
+        list.add("Add Parent");
+        list.add("Settings");
+
+        //Adding list to Adapter and Notify Spinner to change its content :
+        spinnerAdapter.addAll(list);
+        spinnerAdapter.notifyDataSetChanged();
+
 
         // data to populate the RecyclerView with
         ArrayList<Integer> imageBg = new ArrayList<>();
@@ -71,54 +88,10 @@ public class Home extends AppCompatActivity implements MyRecyclerViewAdapter.Ite
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View View, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " Profile " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
-
-
-    /**
-     * This is the section where Google Maps is gonna sort itself out and all and link with the bottom section.
-     */
-
-    class Maps extends AppCompatActivity implements OnMapReadyCallback {
-
-        //Declares a variable for Google Maps
-        private GoogleMap mMap;
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            //Sets the content view for the activity. there is a automatic intent setting in the Manifest which is why its
-            setContentView(layout.activity_home);
-            // Obtain the SupportMapFragment inside the XML of "activity home" and get notified when the map is ready to be used.
-            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                    //Finds the id of the home_map in the XML design
-                    .findFragmentById(id.home_map);
-            mapFragment.getMapAsync(this);
-        }
-
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera. In this case,
-         * we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to install
-         * it inside the SupportMapFragment. This method will only be triggered once the user has
-         * installed Google Play services and returned to the app.
-         */
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
-            mMap = googleMap;
-
-            // Add a marker in Dublin and move the camera around with a static mark. This will then be updated with real time information.
-            // Longitude and Latititude
-            //GOOGLE MAPS ACTIVITY
-            LatLng dublin = new LatLng(+53, -6);
-            mMap.addMarker(new MarkerOptions().position(dublin).title("Marker in Dublin"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(dublin));
-        }
-    }
 }
+

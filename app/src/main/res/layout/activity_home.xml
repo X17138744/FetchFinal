@@ -9,19 +9,19 @@
     android:background="#132D7D"
     tools:context=".Home">
 
-    <Button
-        android:id="@+id/button_logout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextViewUserEmail"
-        android:background="#F36958"
-        android:text="Logout"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
+
+    <fragment
+        android:id="@+id/home_map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="393dp"
+        android:layout_height="322dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kidsScroll"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/kidsScroll"
@@ -30,21 +30,39 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_map"
-        app:layout_constraintVertical_bias="0.13"
-        tools:visibility="visible" />
-
-    <fragment
-        android:id="@+id/home_map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="0dp"
-        android:layout_height="314dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.891"
+        tools:visibility="visible" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/yourcardid"
+        android:layout_width="fill_parent"
+        android:layout_height="38dp"
+        android:elevation="1dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardBackgroundColor="#f36958"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/home_map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_services"
+            style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:dropDownWidth="fill_parent"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="5dp" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
