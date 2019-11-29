@@ -1,5 +1,10 @@
 package fetch.app;
 
+/**
+ * Matthew Byrne - x17138744 / PHP script
+ */
+
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,10 +26,15 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * This is the Create Account class. Here we have the PHP vibes sending and logging in on Workbench... The PHP files are also in the folder of this java zip file you are reading right now!
+ */
+
 public class CreateAccount extends AppCompatActivity {
 
     // Creating EditText.
-    EditText FullName, Email, Password ;
+    EditText FullName, Email, Password;
 
     // Creating buttons;
     Button Register, Return;
@@ -33,20 +43,24 @@ public class CreateAccount extends AppCompatActivity {
     RequestQueue requestQueue;
 
     // Create string variable to hold the EditText Value.
-    String NameHolder, EmailHolder, PasswordHolder ;
+    String NameHolder, EmailHolder, PasswordHolder;
 
     // Creating Progress dialog.
     ProgressDialog progressDialog;
 
+    /**
+     * This could be handy link to the Heroku to display our website or other info whatever our preference is.
+     */
+
     // Storing server url into String variable.
     String HttpUrl = "https://fetch-live.herokuapp.com/index.php";
 
-    Boolean CheckEditText ;
+    Boolean CheckEditText;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_create_account);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_account);
 
         // Assigning ID's to EditText.
         FullName = findViewById(R.id.EditTextFullName);
@@ -59,6 +73,10 @@ public class CreateAccount extends AppCompatActivity {
         Register = findViewById(R.id.ButtonRegister);
 
         Return = findViewById(R.id.ButtonReturn);
+
+        /**
+         * Below is the "Volley" dependency that is used to send the PHP to Workbench. It is featured as a implementation in the gradle.
+         */
 
         // Creating Volley newRequestQueue .
         requestQueue = Volley.newRequestQueue(CreateAccount.this);
@@ -73,12 +91,11 @@ public class CreateAccount extends AppCompatActivity {
 
                 CheckEditTextIsEmptyOrNot();
 
-                if(CheckEditText){
+                if (CheckEditText) {
 
                     UserRegistration();
 
-                }
-                else {
+                } else {
 
                     Toast.makeText(CreateAccount.this, "Please fill all form fields.", Toast.LENGTH_LONG).show();
 
@@ -96,13 +113,18 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
+    /**
+     * Proceeds to the login page once PHP has been sent over!
+     */
+
+
     private void Return() {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
 
     }
 
-    public void UserRegistration(){
+    public void UserRegistration() {
 
         // Showing progress dialog at user registration time.
         progressDialog.setMessage("Please Wait, We are Inserting Your Data on Server");
@@ -140,6 +162,11 @@ public class CreateAccount extends AppCompatActivity {
 
                 // Adding All values to Params.
                 // The first argument should be same sa your MySQL database table columns.
+
+                /**
+                 * Throws in the three strings, email, password and name onto workbench.
+                 */
+
                 params.put("email", EmailHolder);
                 params.put("password", PasswordHolder);
                 params.put("fName", NameHolder);
@@ -150,6 +177,10 @@ public class CreateAccount extends AppCompatActivity {
             }
         };
 
+        /**
+         * Volley vibes featured in the Gradle
+         */
+
         // Creating RequestQueue.
         RequestQueue requestQueue = Volley.newRequestQueue(CreateAccount.this);
 
@@ -158,8 +189,7 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
-
-    public void CheckEditTextIsEmptyOrNot(){
+    public void CheckEditTextIsEmptyOrNot() {
 
         // Getting values from EditText.
         NameHolder = FullName.getText().toString().trim();
@@ -171,6 +201,5 @@ public class CreateAccount extends AppCompatActivity {
         // If any of EditText is filled then set variable value as True.
         CheckEditText = !TextUtils.isEmpty(NameHolder) && !TextUtils.isEmpty(EmailHolder) && !TextUtils.isEmpty(PasswordHolder);
     }
-
 }
 

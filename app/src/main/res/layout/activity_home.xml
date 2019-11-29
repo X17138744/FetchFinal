@@ -5,7 +5,6 @@
     android:id="@+id/homeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:background="#132D7D"
     tools:context=".Home">
 
@@ -38,23 +37,25 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/yourcardid"
-        android:layout_width="fill_parent"
-        android:layout_height="38dp"
+        android:layout_width="203dp"
+        android:layout_height="42dp"
         android:elevation="1dp"
         android:innerRadius="0dp"
         android:shape="ring"
         android:thicknessRatio="1.9"
         app:cardBackgroundColor="#f36958"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_map"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023">
 
         <Spinner
-            android:id="@+id/spinner_services"
+            android:id="@+id/spinner_dropdown"
             style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:dropDownWidth="fill_parent"
             android:gravity="center"
@@ -64,5 +65,17 @@
             tools:layout_editor_absoluteX="29dp"
             tools:layout_editor_absoluteY="5dp" />
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="114dp"
+        android:layout_height="83dp"
+        android:src="@drawable/fetchtrans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

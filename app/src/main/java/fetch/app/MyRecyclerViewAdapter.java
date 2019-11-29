@@ -1,5 +1,9 @@
 package fetch.app;
 
+/**
+ * Matthew Byrne - x17138744 / Recycle View (Carosel)
+ */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +19,20 @@ import static fetch.app.R.layout.activity_recyclerview_item;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<Integer> mViewColors;
-    private List<String> mAnimals;
+    /**
+     * This class is a extension of the recycle view. It creates all the assets that make up the carosel that include image background, text and click listener.
+     */
+
+    private List<Integer> mViewImage;
+    private List<String> mKids;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
     MyRecyclerViewAdapter(Context context, List<Integer> colors, List<String> animals) {
         this.mInflater = LayoutInflater.from(context);
-        this.mViewColors = colors;
-        this.mAnimals = animals;
+        this.mViewImage = colors;
+        this.mKids = animals;
     }
 
     // inflates the row layout from xml when needed
@@ -38,16 +46,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // binds the data to the view and text view in each row
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int color = mViewColors.get(position);
-        String animal = mAnimals.get(position);
+        int color = mViewImage.get(position);
+        String kids = mKids.get(position);
         holder.myView.setBackgroundColor(color);
-        holder.myTextView.setText(animal);
+        holder.myTextView.setText(kids);
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mAnimals.size();
+        return mKids.size();
     }
 
     // stores and recycles views as they are scrolled off screen
@@ -70,7 +78,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     // convenience method for getting data at click position
     public String getItem(int id) {
-        return mAnimals.get(id);
+        return mKids.get(id);
     }
 
     // allows clicks events to be caught

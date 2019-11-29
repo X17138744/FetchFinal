@@ -1,5 +1,8 @@
 package fetch.app;
 
+/**
+ *  Matthew Kearns - x17492632 / Login Features
+ */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,21 +14,23 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//SHOCKINGLY, creates a new account, stores in database
-//opens Family page on creation
+
 public class Login extends AppCompatActivity {
 
-    private EditText EmailField;
-    private EditText PasswordField;
-    private Button loginBtn;
-    private Button createBtn;
+    /**
+     * Currently on this version no PHP or Firebase connected just log straight in.
+     */
+
+
+    EditText EmailField;
+    EditText PasswordField;
+    Button loginBtn;
+    Button createBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 
         EmailField = findViewById(R.id.email);
         PasswordField = findViewById(R.id.password);
@@ -52,9 +57,14 @@ public class Login extends AppCompatActivity {
 
     }
 
+    /**
+     * New intents for Create Account and Home pages.
+     */
+
+
     private void HomeLogin() {
-            Intent intent = new Intent(this, Home.class);
-            startActivity(intent);
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
 
     }
 
@@ -76,12 +86,10 @@ public class Login extends AppCompatActivity {
             String passwordInput = PasswordField.getText().toString().trim();
 
             loginBtn.setEnabled(!emailInput.isEmpty() && !passwordInput.isEmpty());
-
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-
         }
 
     };

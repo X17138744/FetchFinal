@@ -4,10 +4,11 @@
     package="fetch.app">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google MapsActivity Android API v2, but you must specify either coarse or fine
+         Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,21 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Home" />
-        <activity android:name=".MapsActivity" />
         <!--
-             The API key for Google MapsActivity-based APIs is defined as a string resource.
+             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
@@ -40,7 +30,25 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyB0blHup59_hObYpAOeGbCJ1-50OVNyQhU" />
+
+        <service
+            android:name=".TrackerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".TrackerActivity" />
+        <activity android:name=".Login" />
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".Profile" />
+        <activity android:name=".Home" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

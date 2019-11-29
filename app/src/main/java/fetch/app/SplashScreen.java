@@ -1,5 +1,9 @@
 package fetch.app;
 
+/**
+ * Ben Carroll - x17501726 - Splash Screen intent
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +11,10 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
+
+    /**
+     * Wahey it's a fancy Splash Screen
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
