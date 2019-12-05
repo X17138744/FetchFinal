@@ -38,7 +38,7 @@
             android:exported="true" />
 
         <activity android:name=".TrackerActivity" />
-        <activity android:name=".Login" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".Profile" />
         <activity android:name=".Home" />

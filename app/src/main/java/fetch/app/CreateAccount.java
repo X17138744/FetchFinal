@@ -9,11 +9,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -22,6 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,19 +41,22 @@ import java.util.Map;
 public class CreateAccount extends AppCompatActivity {
 
     // Creating EditText.
-    EditText FullName, Email, Password;
+    protected EditText FullName, Email, Password;
 
     // Creating buttons;
-    Button Register, Return;
+    private Button Register, Return;
 
     // Creating Volley RequestQueue.
     RequestQueue requestQueue;
 
     // Create string variable to hold the EditText Value.
-    String NameHolder, EmailHolder, PasswordHolder;
+    private String NameHolder, EmailHolder, PasswordHolder;
 
     // Creating Progress dialog.
     ProgressDialog progressDialog;
+
+    private FirebaseAuth mAuth;
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     /**
      * This could be handy link to the Heroku to display our website or other info whatever our preference is.
@@ -88,12 +98,12 @@ public class CreateAccount extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 CheckEditTextIsEmptyOrNot();
 
                 if (CheckEditText) {
 
                     UserRegistration();
+
 
                 } else {
 
@@ -103,7 +113,6 @@ public class CreateAccount extends AppCompatActivity {
 
             }
         });
-
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +128,7 @@ public class CreateAccount extends AppCompatActivity {
 
 
     private void Return() {
-        Intent intent = new Intent(this, Login.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }
@@ -201,5 +210,8 @@ public class CreateAccount extends AppCompatActivity {
         // If any of EditText is filled then set variable value as True.
         CheckEditText = !TextUtils.isEmpty(NameHolder) && !TextUtils.isEmpty(EmailHolder) && !TextUtils.isEmpty(PasswordHolder);
     }
+
+
+
 }
 
