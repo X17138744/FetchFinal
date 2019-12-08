@@ -161,7 +161,7 @@ public class Home extends FragmentActivity implements MyRecyclerViewAdapter.Item
          */
 
         //Define Spinner
-        spinner = (Spinner) findViewById(R.id.spinner_dropdown);
+        spinner = findViewById(R.id.spinner_dropdown);
         spinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, android.R.id.text1);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -214,7 +214,7 @@ public class Home extends FragmentActivity implements MyRecyclerViewAdapter.Item
         kidsNames.add("Matt");
         kidsNames.add("Keith");
         kidsNames.add("Ben");
-        kidsNames.add("Keanrz");
+        kidsNames.add("Kearnz");
 
         // Set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.kidsScroll);
